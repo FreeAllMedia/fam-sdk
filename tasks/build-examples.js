@@ -3,7 +3,7 @@ import path from "path";
 
 module.exports = (gulp, plugins) => {
   const paths = {
-    input: path.join(__dirname, "../examples/**/*"),
+    input: path.join(__dirname, "../source/examples/**/*"),
     output: path.join(__dirname, "../dist/examples/")
   };
 
