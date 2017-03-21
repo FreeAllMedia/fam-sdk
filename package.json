@@ -1,21 +1,19 @@
 {
   "name": "fam-sdk",
-  "description": "A Javascript library to integrate FAM into web apps.",
-  "version": "0.0.0",
+  "description": "A javascript library to integrate FAM into web apps.",
+  "version": "0.0.1",
   "main": "source/fam.js",
   "license": "MIT",
   "author": "dcrockwell",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FreeAllMedia/fam-sdk-js"
+    "url": "git+https://github.com/FreeAllMedia/fam-sdk"
   },
   "bugs": {
-    "url": "https://github.com/FreeAllMedia/fam-sdk-js/issues"
+    "url": "https://github.com/FreeAllMedia/fam-sdk/issues"
   },
-  "homepage": "https://github.com/FreeAllMedia/fam-sdk-js#readme",
-  "dependencies": {
-    "incognito": "^0.1.4"
-  },
+  "homepage": "https://github.com/FreeAllMedia/fam-sdk#readme",
+  "dependencies": {},
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.4.0",
