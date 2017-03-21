@@ -48,6 +48,12 @@ $ npm install fam-sdk
 $ ls ./node_modules/fam-sdk/dist/fam.js
 ```
 
+## Example Code
+
+A complete example is available in the `/dist/examples` directory and on our CDN:
+
+* [https://cdn.freeallmedia.com/sdk/js/0/latest/examples/basic.html](https://cdn.freeallmedia.com/sdk/js/0/latest/examples/basic.html)
+
 ## Usage
 
 ### `fam.window(url)`
@@ -57,7 +63,7 @@ $ ls ./node_modules/fam-sdk/dist/fam.js
 3. Returns the new `window` object.
 
 ```javascript
-const famWindow = fam.window("https://cdn.freeallmedia.com/my-campaign/index.html");
+const famWindow = fam.window("https://cdn.freeallmedia.com/campaigns/my-campaign/index.html");
 
 setTimeout(() => {
   famWindow.close();
@@ -71,7 +77,7 @@ setTimeout(() => {
 3. Returns the iFrame's DOM element.
 
 ```javascript
-const iFrameElement = fam.iframe("https://cdn.freeallmedia.com/my-campaign/index.html");
+const iFrameElement = fam.iframe("https://cdn.freeallmedia.com/campaigns/my-campaign/index.html");
 ```
 
 ### `fam.on(eventName, eventHandler)`
