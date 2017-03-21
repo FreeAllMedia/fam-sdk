@@ -3,7 +3,7 @@ module.exports = (gulp, plugins) => {
     root: plugins.path.join(__dirname, "../dist/")
   };
 
-  gulp.task("example", ["build", "server"])
+  gulp.task("example", ["build", "server"]);
 
   gulp.task("server", () => {
     plugins.connect.server({

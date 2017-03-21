@@ -1,9 +1,9 @@
 module.exports = (gulp, plugins) => {
   const paths = {
     input: {
-      entry: plugins.path.join(__dirname, "../source/lib/entry.js"),
+      entry: plugins.path.join(__dirname, "../source/lib/window.js")
     },
-    output: plugins.path.join(__dirname, "../dist/unoptimized/javascript")
+    output: plugins.path.join(__dirname, "../dist/")
   };
 
   const webpackConfig = {
@@ -28,7 +28,7 @@ module.exports = (gulp, plugins) => {
 
   gulp.task("build-javascript", done => {
     plugins.webpack(webpackConfig, (error, stats) => {
-      console.log(stats);
+      // console.log(stats);
       done();
     });
   });

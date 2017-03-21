@@ -1,6 +1,6 @@
 # Free All Media Javascript SDK
 
-* This SDK helps you integrate FAM into your web site or web app with ease.
+* Helps you integrate FAM into your web site or web app with minimal setup.
 * Event callbacks for everything you need.
 * Can be included into an HTML document or imported directly via `npm`.
 * CDN hosted and non-hosted copies available.
@@ -9,15 +9,15 @@
 
 **CDN Hosted**
 
-The latest version of the FAM Javascript SDK is hosted on our CDN at:
+You can always pull the latest version of the FAM Javascript SDK from our CDN at:
 
-    https://cdn.freeallmedia.com/sdk/js/1/fam.js
+    https://cdn.freeallmedia.com/sdk/js/0/latest/fam.js
 
 **HTML**
 
 ```html
 <!-- Include this at the bottom of your 'body' tag -->
-<script src="https://cdn.freeallmedia.com/sdk/js/1/fam.js"></script>
+<script src="https://cdn.freeallmedia.com/sdk/js/0/latest/fam.js"></script>
 <script type="text/javascript">
   (function (window) {
     const fam = new Fam();
@@ -111,26 +111,14 @@ fam.on("activity:end", function (activity, results) {
 ```
 
 ```javascript
-fam.on("creative:impression", function (activity, creative) {
-  console.log(`Creative "${creative.name}" shown in activity "${activity.name}"`);
+fam.on("image:impression", function (activity, creative) {
+  console.log(`Image "${creative.name}" shown in activity "${activity.name}"`);
 });
 ```
 
 ```javascript
-fam.on("creative:clickthrough", function (activity, creative, url) {
-  console.log(`Creative "${creative.name}" clicked through to url "${url}" in activity "${activity.name}"`);
-});
-```
-
-```javascript
-fam.on("creative:impression", function (activity, creative) {
-  console.log(`Creative "${creative.name}" shown in activity "${activity.name}"`);
-});
-```
-
-```javascript
-fam.on("creative:clickthrough", function (activity, creative, url) {
-  console.log(`Creative "${creative.name}" clicked through to url "${url}" in activity "${activity.name}"`);
+fam.on("image:clickthrough", function (activity, creative, url) {
+  console.log(`Image "${creative.name}" clicked through to url "${url}" in activity "${activity.name}"`);
 });
 ```
 

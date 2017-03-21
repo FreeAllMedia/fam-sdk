@@ -7,10 +7,13 @@ import { argv } from "yargs";
 const tasksPath = path.join(__dirname, "tasks");
 const taskFiles = require("fs").readdirSync(tasksPath);
 
-const plugins = loadPlugins();
-plugins.environmentName = argv.environment || "development";
-plugins.path = path;
-plugins.runSequence = runSequence;
-plugins.webpack = require("webpack");
+const extras = loadPlugins();
 
-taskFiles.forEach(taskFile => require(path.join(tasksPath, taskFile))(gulp, plugins));
+extras.environmentName = argv.environment || "development";
+extras.path = path;
+extras.runSequence = runSequence;
+extras.webpack = require("webpack");
+extras.environment = require("./environments.json")[extras.environmentName];
+extras.version = require("./package.json").version;
+
+taskFiles.forEach(taskFile => require(path.join(tasksPath, taskFile))(gulp, extras));

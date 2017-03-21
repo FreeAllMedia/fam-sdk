@@ -139,8 +139,8 @@
 	            eventHandler(activity, results);
 	          };
 	          break;
-	        case "creative:impression":
-	        case "creative:clickthrough":
+	        case "image:impression":
+	        case "image:clickthrough":
 	          handlerWrapper = function handlerWrapper(event) {
 	            var activity = event.detail.activity;
 	            var creative = event.detail.creative;
@@ -148,7 +148,7 @@
 	          };
 	          break;
 	        default:
-	          throw new Error("FAM: \"" + eventName + "\" is not a valid FAM event name.");
+	          throw new Error("FAM: \"" + eventName + "\" is not a valid FAM event name. See README for full list of event names.");
 	      }
 
 	      window.document.addEventListener("fam:" + eventName, handlerWrapper);
@@ -156,17 +156,14 @@
 	  }, {
 	    key: listenForEvents,
 	    value: function value() {
-	      // Create IE + others compatible event handler
-	      var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-	      var eventer = window[eventMethod];
-	      var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+	      var eventListenerName = window.addEventListener ? "addEventListener" : "attachEvent";
+	      var eventListener = window[eventListenerName];
+	      var eventName = eventListenerName === "attachEvent" ? "onmessage" : "message";
 
-	      // Listen to message from child window
-	      eventer(messageEvent, function (event) {
+	      eventListener(eventName, function (event) {
 	        if (event.data.origin && event.data.origin === "FreeAllMedia") {
 	          var customEvent = new CustomEvent(event.data.event, { detail: event.data.payload });
 	          document.dispatchEvent(customEvent);
-	          //console.log("parent received message!:  ", event.data);
 	        }
 	      }, false);
 	    }
