@@ -9,7 +9,7 @@ module.exports = (gulp, plugins) => {
     plugins.connect.server({
       root: paths.root,
       livereload: false,
-      host: "10.0.0.117",
+      host: "10.0.0.36",
       port: 3002
     });
   });

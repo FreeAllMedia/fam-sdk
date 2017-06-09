@@ -24,6 +24,7 @@
     "gulp-connect": "^5.0.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-s3-upload": "^1.6.4",
+    "gulp-sass": "^3.1.0",
     "rimraf": "^2.6.1",
     "run-sequence": "^1.2.2",
     "yargs": "^7.0.2"

@@ -4,6 +4,9 @@
 * Event callbacks for everything you need.
 * Can be included into an HTML document or imported directly via `npm`.
 * CDN hosted and non-hosted copies available.
+* Automatic detection of adblockers with user prompt.
+  * Asks user to please disable their adblocker to gain access to the offer.
+  * Provides instructions on how to disable adblocking for the offer.
 
 ## Installation
 
@@ -156,4 +159,17 @@ fam.on("video:mute", function (activity) {
 fam.on("video:unmute", function (activity) {
   console.log(`Video for activity "${activity.name}" un-muted.`);
 });
+```
+
+## Detect Adblocker w/ Alternate Messaging
+
+You can automatically detect when adblockers are active and provide alternate messaging asking the user to disable it for the offer.
+
+**Note:** As with all adblocker detectors, user must refresh browser in order to detect that adblocker was disabled.
+
+```javascript
+fam.adblocker.active = true; // defaults to true
+fam.adblocker.title = "Oops!";
+fam.adblocker.subtitle = "We rely on ad support";
+fam.adblocker.body = "Turn off adblocker and we'll give you an ad-lite experience for the next 2 months!";
 ```

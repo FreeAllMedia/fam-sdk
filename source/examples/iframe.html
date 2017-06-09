@@ -4,23 +4,19 @@
   </head>
 
   <body>
-    <iframe src="https://cdn-demo.freeallmedia.com/campaigns/mailonline-survey/index.html#survey-step-1" width="100%" height="100%" frameborder="0"></iframe>
-
-    <div id="fam" style="width: 100%; height: 400px"></div>
-    <a href="#" onclick="openFamWindow()">Open New Window</a>
+    <div id="fam" style="width: 100%; height: 100%"></div>
 
     <!-- START FAM -->
-    <script src="https://cdn.freeallmedia.com/sdk/js/0/latest/fam.js"></script>
+    <script src="../fam.js"></script>
+    <link rel="stylesheet" href="../fam.css" type="text/css"></link>
     <script type="text/javascript">
-      var fam = new FreeAllMedia();
+      var campaignName = "optimized"
+      var campaignHost = "http://10.0.0.36:3001";
+      //var campaignHost = "https://cdn-demo.freeallmedia.com";
 
-      var campaignUrl = "https://cdn-demo.freeallmedia.com/campaigns/call-of-duty/index.html";
+      var fam = new FreeAllMedia({ host: campaignHost });
 
-      fam.iframe("fam", campaignUrl);
-
-      function openFamWindow() {
-        fam.window(campaignUrl);
-      }
+      fam.iframe("fam", campaignName);
 
       fam.on("start", function () {
         console.log("FAM experience started.");
