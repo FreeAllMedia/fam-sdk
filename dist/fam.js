@@ -95,6 +95,9 @@
 	          iframeElement.frameBorder = 0;
 	          iframeElement.setAttribute("src", this[campaignURL](campaignName));
 	          container.appendChild(iframeElement);
+	          this.on("end", function () {
+	            iframeElement.className = "closed";
+	          });
 	          return iframeElement;
 	        } else {
 	          throw new Error("FAM: \"" + domID + "\" is not a valid DOM element ID.");

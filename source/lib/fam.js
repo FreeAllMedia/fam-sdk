@@ -21,6 +21,9 @@ export default class FreeAllMedia {
         iframeElement.frameBorder = 0;
         iframeElement.setAttribute("src", this[campaignURL](campaignName));
         container.appendChild(iframeElement);
+        this.on("end", () => {
+          iframeElement.className = "closed";
+        });
         return iframeElement;
       } else {
         throw new Error(`FAM: "${domID}" is not a valid DOM element ID.`);

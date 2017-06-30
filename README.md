@@ -6,7 +6,7 @@
 * CDN hosted and non-hosted copies available.
 * Automatic detection of adblockers with user prompt.
   * Asks user to please disable their adblocker to gain access to the offer.
-  * Provides instructions on how to disable adblocking for the offer.
+  * Provides animated instructions on how to disable adblocking for the offer.
 
 ## Installation
 
@@ -66,7 +66,7 @@ A complete example is available in the `/dist/examples` directory and on our CDN
 3. Returns the new `window` object.
 
 ```javascript
-const famWindow = fam.window("https://cdn.freeallmedia.com/campaigns/my-campaign/index.html");
+const famWindow = fam.window("my-campaign-name");
 
 setTimeout(() => {
   famWindow.close();
@@ -80,7 +80,7 @@ setTimeout(() => {
 3. Returns the iFrame's DOM element.
 
 ```javascript
-const iFrameElement = fam.iframe("https://cdn.freeallmedia.com/campaigns/my-campaign/index.html");
+const iFrameElement = fam.iframe("my-campaign-name");
 ```
 
 ### `fam.on(eventName, eventHandler)`
@@ -171,5 +171,5 @@ You can automatically detect when adblockers are active and provide alternate me
 fam.adblocker.active = true; // defaults to true
 fam.adblocker.title = "Oops!";
 fam.adblocker.subtitle = "We rely on ad support";
-fam.adblocker.body = "Turn off adblocker and we'll give you an ad-lite experience for the next 2 months!";
+fam.adblocker.body = "Please turn off your adblocker, then refresh to see your content.";
 ```
