@@ -8,5 +8,5 @@ pids
 *.pid
 *.seed
 *.pid.lock
-
+dist/*
 node_modules

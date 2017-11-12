@@ -1,7 +1,7 @@
 {
   "name": "fam-sdk",
   "description": "A javascript library to integrate FAM into web apps.",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "main": "source/fam.js",
   "license": "MIT",
   "author": "dcrockwell",

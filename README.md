@@ -4,6 +4,7 @@
 * Event callbacks for everything you need.
 * Can be included into an HTML document or imported directly via `npm`.
 * CDN hosted and non-hosted copies available.
+* Custom geo-targeting.
 * Automatic detection of adblockers with user prompt.
   * Asks user to please disable their adblocker to gain access to the offer.
   * Provides animated instructions on how to disable adblocking for the offer.
@@ -164,6 +165,19 @@ fam.on("video:unmute", function (activity) {
 ## Detect Adblocker w/ Alternate Messaging
 
 You can automatically detect when adblockers are active and provide alternate messaging asking the user to disable it for the offer.
+
+**Note:** As with all adblocker detectors, user must refresh browser in order to detect that adblocker was disabled.
+
+```javascript
+fam.adblocker.active = true; // defaults to true
+fam.adblocker.title = "Oops!";
+fam.adblocker.subtitle = "We rely on ad support";
+fam.adblocker.body = "Please turn off your adblocker, then refresh to see your content.";
+```
+
+## Geo-Targeting
+
+You can restrict or show content based upon the continent, country, region, and city of users.
 
 **Note:** As with all adblocker detectors, user must refresh browser in order to detect that adblocker was disabled.
 

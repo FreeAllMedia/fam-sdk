@@ -12,7 +12,7 @@ export default class FreeAllMedia {
     this[listenForEvents]();
   }
 
-  iframe(domID, campaignName) {
+  iframe(domID, campaignName, options = {}) {
     if (!this[detectAdblocker]()) {
       const container = window.document.getElementById(domID);
 
@@ -21,9 +21,20 @@ export default class FreeAllMedia {
         iframeElement.frameBorder = 0;
         iframeElement.setAttribute("src", this[campaignURL](campaignName));
         container.appendChild(iframeElement);
-        this.on("end", () => {
-          iframeElement.className = "closed";
+        if (options.closeOnEnd) {
+          this.on("end", () => {
+            iframeElement.className = "closed";
+          });
+        }
+
+        this.on("activity:start", () => {
+          // iframeElement.width  = iframeElement.contentWindow.document.body.scrollWidth;
+          console.log("RESIZING");
+          iframeElement.height = iframeElement.contentWindow.document.body.scrollHeight;
         });
+
+        iframeElement.height = iframeElement.contentWindow.document.body.scrollHeight;
+
         return iframeElement;
       } else {
         throw new Error(`FAM: "${domID}" is not a valid DOM element ID.`);
@@ -65,40 +76,15 @@ export default class FreeAllMedia {
   on(eventName, eventHandler) {
     let handlerWrapper = function () { eventHandler(); };
 
-    switch (eventName) {
-      case "start":
-      case "end":
-      break;
-      case "close":
-      case "video:play":
-      case "video:pause":
-      case "video:end":
-      case "video:mute":
-      case "video:unmute":
-      case "activity:start":
-        handlerWrapper = function (event) {
-          const activity = event.detail.activity;
-          eventHandler(activity);
-        };
-      break;
-      case "activity:end":
-        handlerWrapper = function (event) {
-          const activity = event.detail.activity;
-          const results = event.detail.results;
-          eventHandler(activity, results);
-        };
-      break;
-      case "image:impression":
-      case "image:clickthrough":
-        handlerWrapper = function (event) {
-          const activity = event.detail.activity;
-          const creative = event.detail.creative;
-          eventHandler(activity, creative);
-        };
-      break;
-      default:
-        throw new Error(`FAM: "${eventName}" is not a valid FAM event name. See README for full list of event names.`);
-    }
+    handlerWrapper = function (event) {
+      let handlerArguments = [];
+
+      if (event.detail.activity) { handlerArguments.push(event.detail.activity); }
+      if (event.detail.creative) { handlerArguments.push(event.detail.creative); }
+      if (event.detail.results) { handlerArguments.push(event.detail.results); }
+
+      eventHandler(...handlerArguments);
+    };
 
     window.document.addEventListener(`fam:${eventName}`, handlerWrapper);
   }

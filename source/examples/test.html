@@ -1,0 +1,37 @@
+<html>
+  <body>
+    <!-- <script async type="text/javascript" src="//cdn.connatix.com/min/connatix.renderer.infeed.min.js" data-connatix-token="aa9f0c8e-4206-44bf-a1fa-ddd20991af68" comscoreid="18120612" cnx-head=true></script> -->
+    <article id="fam-connatix-player"></article>
+
+    <script type="text/javascript">
+
+      var options = {
+        token: "aa9f0c8e-4206-44bf-a1fa-ddd20991af68",
+        comscoreid: "18120612",
+        containerId: "fam-connatix-player"
+      };
+
+      options.container = document.getElementById(options.containerId);
+
+      window["player_callback"] = function (unit) {
+        unit
+          .on("ready",function(){})
+          .on("videoPause", function(){})
+          .on("videoPlay", function(){})
+          .init();
+      };
+
+      (function (cnxwindow, cnxdocument, cnxoptions) {
+        var s = cnxdocument.createElement("script");
+        s.async = 1;
+        s.src = "https://cdn.connatix.com/min/connatix.renderer.infeed.min.js";
+        s.setAttribute("data-connatix-token", cnxoptions.token);
+        s.setAttribute("comscoreid", cnxoptions.comscoreid)
+        s.setAttribute("ext-interface-callback", "player_callback");
+        s.setAttribute("cnx-head", true);
+        cnxoptions.container.appendChild(s);
+      })(window, document, options);
+
+    </script>
+  </body>
+</html>

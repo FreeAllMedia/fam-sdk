@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>FAM Demo</title>
+    <style type="text/css">
+      iframe {
+        width: 50vw;
+        height: 80vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="fam"></div>
+
+    <!-- START FAM -->
+    <script src="https://cdn-staging.freeallmedia.com/sdk/js/0/latest/fam.js"></script>
+    <link rel="stylesheet" href="https://cdn-staging.freeallmedia.com/sdk/js/0/latest/fam.css" type="text/css"></link>
+
+    <script type="text/javascript">
+      var fam = new FreeAllMedia({ host: "https://cdn-staging.freeallmedia.com/campaigns" });
+
+      fam.iframe('fam', 'adidas', { closeOnEnd: true })
+    </script>
+    <!-- END FAM -->
+  </body>
+</html>
