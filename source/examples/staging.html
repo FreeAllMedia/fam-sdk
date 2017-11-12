@@ -7,16 +7,16 @@
   <body>
     <a href="#" onclick="fam.dialog('interstitial')">Choose Ad Experience Dialog</a>
     <a href="#" onclick="fam.dialog('call-of-duty')">Earn DLC by Watching Ad</a>
-    <a href="#" onclick="fam.iframe('fam', 'mailonline-survey', { closeOnEnd: true })">Survey iFrame</a>
+    <a href="#" onclick="fam.iframe('fam', 'adidas', { closeOnEnd: true })">Survey iFrame</a>
 
     <div id="fam"></div>
 
     <!-- START FAM -->
-    <script src="https://cdn-demo.freeallmedia.com/sdk/js/0/latest/fam.js"></script>
-    <link rel="stylesheet" href="https://cdn-demo.freeallmedia.com/sdk/js/0/latest/fam.css" type="text/css"></link>
+    <script src="https://cdn-staging.freeallmedia.com/sdk/js/0/latest/fam.js"></script>
+    <link rel="stylesheet" href="https://cdn-staging.freeallmedia.com/sdk/js/0/latest/fam.css" type="text/css"></link>
 
     <script type="text/javascript">
-      var fam = new FreeAllMedia({ host: "https://cdn-demo.freeallmedia.com/campaigns" });
+      var fam = new FreeAllMedia({ host: "https://cdn-staging.freeallmedia.com/campaigns" });
 
       fam.on("start", function () {
         console.log("FAM experience started.");

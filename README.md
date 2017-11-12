@@ -4,6 +4,10 @@
 * Event callbacks for everything you need.
 * Can be included into an HTML document or imported directly via `npm`.
 * CDN hosted and non-hosted copies available.
+* Custom geo-targeting.
+* Automatic detection of adblockers with user prompt.
+  * Asks user to please disable their adblocker to gain access to the offer.
+  * Provides animated instructions on how to disable adblocking for the offer.
 
 ## Installation
 
@@ -63,7 +67,7 @@ A complete example is available in the `/dist/examples` directory and on our CDN
 3. Returns the new `window` object.
 
 ```javascript
-const famWindow = fam.window("https://cdn.freeallmedia.com/campaigns/my-campaign/index.html");
+const famWindow = fam.window("my-campaign-name");
 
 setTimeout(() => {
   famWindow.close();
@@ -77,7 +81,7 @@ setTimeout(() => {
 3. Returns the iFrame's DOM element.
 
 ```javascript
-const iFrameElement = fam.iframe("https://cdn.freeallmedia.com/campaigns/my-campaign/index.html");
+const iFrameElement = fam.iframe("my-campaign-name");
 ```
 
 ### `fam.on(eventName, eventHandler)`
@@ -156,4 +160,30 @@ fam.on("video:mute", function (activity) {
 fam.on("video:unmute", function (activity) {
   console.log(`Video for activity "${activity.name}" un-muted.`);
 });
+```
+
+## Detect Adblocker w/ Alternate Messaging
+
+You can automatically detect when adblockers are active and provide alternate messaging asking the user to disable it for the offer.
+
+**Note:** As with all adblocker detectors, user must refresh browser in order to detect that adblocker was disabled.
+
+```javascript
+fam.adblocker.active = true; // defaults to true
+fam.adblocker.title = "Oops!";
+fam.adblocker.subtitle = "We rely on ad support";
+fam.adblocker.body = "Please turn off your adblocker, then refresh to see your content.";
+```
+
+## Geo-Targeting
+
+You can restrict or show content based upon the continent, country, region, and city of users.
+
+**Note:** As with all adblocker detectors, user must refresh browser in order to detect that adblocker was disabled.
+
+```javascript
+fam.adblocker.active = true; // defaults to true
+fam.adblocker.title = "Oops!";
+fam.adblocker.subtitle = "We rely on ad support";
+fam.adblocker.body = "Please turn off your adblocker, then refresh to see your content.";
 ```

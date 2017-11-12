@@ -3,6 +3,8 @@ module.exports = (gulp, plugins) => {
     plugins.runSequence(
       "build-clean",
       "build-javascript",
+      "build-css",
+      "build-images",
       "build-examples",
       done
     );

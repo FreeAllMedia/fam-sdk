@@ -5,18 +5,22 @@
   </head>
 
   <body>
-    <a href="#" onclick="fam.dialog('interstitial')">Choose Ad Experience Dialog</a>
-    <a href="#" onclick="fam.dialog('call-of-duty')">Earn DLC by Watching Ad</a>
-    <a href="#" onclick="fam.iframe('fam', 'mailonline-survey', { closeOnEnd: true })">Survey iFrame</a>
+    <a href="#" onclick="fam.dialog('unoptimized')">Open Dialog</a>
+    <a href="#" onclick="fam.iframe('fam', 'unoptimized', { closeOnEnd: true })">Show iFrame</a>
+
+    <script async type='text/javascript' src='//cdn.connatix.com/min/connatix.renderer.infeed.min.js' data-connatix-token='aa9f0c8e-4206-44bf-a1fa-ddd20991af68' comscoreid='18120612' cnx-head=true></script>
+
+    <div class="squad-container" style="width: 100%; height: 90vh; min-height: 480px; max-height: 692px; max-width: 495px; margin: auto;">
+                <iframe class="squad-fill" src="http://squad.90min.com/index.php?country=england" scrolling="no" style="width: 1px; min-width: 100%; height: 1px; min-height: 100%; border: 1px solid #ee8888; "></iframe>
+            </div>
 
     <div id="fam"></div>
 
     <!-- START FAM -->
-    <script src="https://cdn-demo.freeallmedia.com/sdk/js/0/latest/fam.js"></script>
-    <link rel="stylesheet" href="https://cdn-demo.freeallmedia.com/sdk/js/0/latest/fam.css" type="text/css"></link>
-
+    <script src="../fam.js"></script>
+    <link rel="stylesheet" href="../fam.css" type="text/css"></link>
     <script type="text/javascript">
-      var fam = new FreeAllMedia({ host: "https://cdn-demo.freeallmedia.com/campaigns" });
+      var fam = new FreeAllMedia({ host: "http://10.0.0.10:3001" });
 
       fam.on("start", function () {
         console.log("FAM experience started.");
@@ -36,8 +40,8 @@
       fam.on("form:submit", function (activity, results) {
         console.log(`Form named "${activity.name}" submitted with the following results:`, results);
       });
-      fam.on("activity:end", function (activity, results) {
-        console.log(`Activity named "${activity.name}" of type "${activity.type}" ended with the following results:`, results);
+      fam.on("form:survey-activity-step-1:submit", function (activity, results) {
+        console.log(`Specific form submitted with the following results:`, results);
       });
       fam.on("image:impression", function (activity, image) {
         console.log(`Creative "${image.type}" shown in activity "${activity.name}"`);
